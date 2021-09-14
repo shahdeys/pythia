@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>groupId</groupId>
+    <artifactId>pythia</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <spotify-checkstyle.version>1.0.11</spotify-checkstyle.version>
+        <apollo-http.version>1.15.8</apollo-http.version>
+        <puppy-crawl.version>8.24</puppy-crawl.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>apollo-http-service</artifactId>
+            <version>${apollo-http.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.spotify.checkstyle</groupId>
+            <artifactId>spotify-checkstyle-config</artifactId>
+            <version>${spotify-checkstyle.version}</version>
+        </dependency>
+    </dependencies>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>2.17</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.spotify.checkstyle</groupId>
+                        <artifactId>spotify-checkstyle-config</artifactId>
+                        <version>${spotify-checkstyle.version}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.puppycrawl.tools</groupId>
+                        <artifactId>checkstyle</artifactId>
+                        <version>${puppy-crawl.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <configLocation>spotify_checks.xml</configLocation>
+
+                    <!-- The following parameters are optional: -->
+                    <consoleOutput>true</consoleOutput>
+                    <failOnViolation>true</failOnViolation>
+                    <logViolationsToConsole>true</logViolationsToConsole>
+                    <violationSeverity>error</violationSeverity>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>validate</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </reporting>
+</project>
