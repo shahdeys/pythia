@@ -27,6 +27,17 @@
             <artifactId>spotify-checkstyle-config</artifactId>
             <version>${spotify-checkstyle.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>apollo-extra</artifactId>
+            <version>${apollo-http.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.spotify</groupId>
+            <artifactId>completable-futures</artifactId>
+            <version>0.3.5</version>
+        </dependency>
+
     </dependencies>
 
     <reporting>
